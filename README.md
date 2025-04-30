@@ -1,8 +1,14 @@
 # Plantilla TeX - Informes/Labs AST/FIZ
 
-Plantilla para informes y laboratorios de estudiantes de la Pontificia Universidad Católica de Chile enfocada en especial para ramos de FIZ y AST. Basada en AASTeXv7
+Plantilla para informes y laboratorios de estudiantes de la Pontificia Universidad Católica de Chile enfocada en especial para ramos de FIZ y AST. Basada en [AASTeXv7](https://github.com/AASJournals/AASTeX7)
 
-> Disclamer: En lo posible dar créditos a la plantilla como modificación de AASTeXv7 por [jj-sm](https://github.com/jj-sm/)
+> Disclamer 1: En lo posible dar créditos a la plantilla como modificación de AASTeXv7 por [jj-sm](https://github.com/jj-sm/)
+
+> Disclamer 2: El uso de la plantilla no está ligado oficialmente a la UC, consulte con su curso si está permitido y **verifique** si esta plantilla cumple con las normas de estilo de su informe.
+
+>[!INFO]
+>- Se usa `pdfTeX` para compilar el documento.
+>- Se usa el estilo bibliográfico para citas de **AAS Journals**, el cual se encuentra en `../Config/NoMod/aasjournalv7.bst` y puede ser reemplazado. En caso tal referenciarlo al final del documento principal.
 
 ## Vista General
 
@@ -25,16 +31,62 @@ Además, bajo la carpeta de `tikz` incluye soporte para la creación de esferas 
 
 
 ## Instalación
-Puedes comenzar a trabajar desde el `zip` en los últimos _releases_ [aquí](https://github.com/jj-sm/TeX-AST/releases/download/v1.0/TeX-ASTFIZ.zip)
+Puedes comenzar a trabajar desde el `.zip` en los últimos _releases_ [aquí](https://github.com/jj-sm/TeX-AST/releases/download/v1.0/TeX-ASTFIZ.zip).
 
-## Opciones
-...
+>[!CAUTION]
+> En el caso de usar overleaf, y querer trabajar con las esferas celestes, te recomendamos que descargues la carpeta que contiene al `.tex` de las esferas celestes (verificando que incluyas al `>>.code.tex` y compilar cada figura por aparte para luego agregarlas a la carpeta output y poder ser usadas en el documento principal.
+>
+> Se recomienda el uso de vscode para editar esta plantilla más fácilmente.
 
-## Estructura
-...
+## Uso
+Se han agregado nuevas funciones para adaptar esta plantilla correctamente a un uso en la UC. Por defecto, se agregaron comentarios en campos donde se espera que se ingresen los datos propios del documento, estos campos estarán señalados con el tag: `%% [UC-TeX][INPUT]`. Además, los comentarios que comiencen con `%% [UC-TeX]` indican un cambio por parte del equipo, mientras que los comentarios `%% [AASTeX]` indican el archivo y comentarios originales. 
+
+La plantilla cuenta con la siguiente estructura:
+
+```text
+├── InformesTex-Plantilla
+│   ├── aastex7.cls <--------------------------* Estilo de AASTeX
+│   ├── Config
+│   │   ├── authors.tex <----------------------- Archivo donde se incluyen los autores (en caso de no usar cover.tex)
+│   │   ├── keywords.tex <---------------------- Archivo donde se incluyen las keywords
+│   │   └── NoMod
+│   │       └── aasjournalv7.bst <-------------* Estilo Bibliográfico de AASTeX
+│   ├── Informe.pdf <--------------------------- PDF de salida
+│   ├── Informe.tex <--------------------------- Archivo TeX principal
+│   ├── Pages
+│   │   ├── Appendix <-------------------------- Directorio donde se incluyen los apéndices ...
+│   │   │   ├── author.tex 
+│   │   │   ├── ...
+│   │   ├── Doc
+│   │   │   ├── abstract.tex <------------------ Abstract del documento
+│   │   │   ├── acknowledgments.tex <----------- Reconocimientos del documento
+│   │   │   ├── contribution.tex <-------------- Contribuciones del documento
+│   │   │   └── cover.tex <--------------------- Portada del documento, modificar a conveniencia (sin modificar los comandos)
+│   │   └── Sections <-------------------------- Directorio de las secciones (Cuerpo del documento)
+│   │       ├── preguntas.tex
+│   │       └── ....tex
+│   └── Resources
+│       ├── img <------------------------------- Directorio para incluir imágenes y figuras
+│       │   └── image2.png
+│       ├── logos <----------------------------- Directorio para incluir nuevos logos
+│       │   ├── AST-center-black.png
+│       │   ├── AST-center-color.jpg
+│       │   └── ...
+│       ├── misc <-----------------------------* Archivos de soporte para el documento
+│       │   └── orcid-ID.png
+│       └── tikz <------------------------------ Figuras con tikz y esfera celeste
+│           ├── celestial_sphere.pdf
+│           ├── celestial_sphere.tex 
+│           ├── output
+│           │   ├── all.pdf
+│           │   └── ...
+│           └── tikzlibrary3dtools.code.tex <--* Librería para crear esferas celestes
+```
+
+Las indicaciones marcadas con: `<--*` indican que ese archivo o directorio no debe ser modificado.
 
 ## Contribuir
-...
+Se recibe feedback, contribuciones, PRs; ¡todo es bienvenido!
 
 
 Made with ❤️ by [jj-sm](https://www.linkedin.com/in/jj-sm/)
