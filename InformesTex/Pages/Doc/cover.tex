@@ -1,0 +1,122 @@
+\makeatletter
+\newcount\authorcount
+\def\countauthors{%
+    \authorcount=0%
+    \@for\@temp:=\coverauthors\do{\advance\authorcount by 1}%
+}
+
+% Main
+\newcommand{\printauthors}{%
+    \countauthors%
+    \begin{center}
+    \large\textbf{%
+        \ifnum\authorcount>1%
+            \studenttextplural%
+        \else%
+            \studenttextsingular%
+        \fi%
+    }
+    \end{center} \vspace{-0.35cm}
+    \expandafter\@processauthors\coverauthors,\@nil%
+}
+
+% Process author list
+\def\@processauthors#1,#2\@nil{%
+    \ifx&#1&%
+    \else%
+        \expandafter\@processauthor#1\\%
+        \ifx&#2&%
+        \else%
+            \@processauthors#2\@nil%
+        \fi%
+    \fi%
+}
+
+\def\@processauthor#1#2\\{%
+    \href{https://orcid.org/#1}{\textsc{#2} \includegraphics[height=0.8em]{Resources/misc/orcid-ID.png}}\\
+}
+\makeatother
+
+\makeatletter
+\newcount\authorcount
+\def\countauthors{%
+    \authorcount=0%
+    \@for\@temp:=\coverprofessor\do{\advance\authorcount by 1}%
+}
+
+% Main
+\newcommand{\printprof}{%
+    \countauthors%
+    \begin{center}
+    \large\textbf{%
+        \ifnum\authorcount>1%
+            \professortextplural%
+        \else%
+            \professortextsingular%
+        \fi%
+    }
+    \end{center} \vspace{-0.35cm}
+    \expandafter\@processauthors\coverprofessor,\@nil%
+}
+
+% Process author list
+\def\@processauthors#1,#2\@nil{%
+    \ifx&#1&%
+    \else%
+        \expandafter\@processauthor#1\\%
+        \ifx&#2&%
+        \else%
+            \@processauthors#2\@nil%
+        \fi%
+    \fi%
+}
+
+\def\@processauthor#1#2\\{%
+    \href{https://orcid.org/#1}{\textsc{#2} \includegraphics[height=0.8em]{Resources/misc/orcid-ID.png}}\\
+}
+\makeatother
+
+
+
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    % \textsc{\LARGE Pontificia Universidad Católica de Chile}\\[1cm] 
+    
+    \vspace{1.5cm}
+    % If you want to override the logo, uncomment the line below and use and comment \coverlogo
+    % \includegraphics[height=6cm]{Resources/logos/AST-center-black.png}
+    \includegraphics[scale=\coversubjectlogoscale]{Resources/logos/\coversubjectlogo}
+    
+    \vspace{1cm}
+    \HRule \\[0.4cm]
+    {\huge \bfseries \largetitlename}\\
+    \HRule \\
+    
+    \vfill
+    
+    \large \textbf{Asignatura} \\
+    \textsc{AST101} - Objetos Messier
+    
+    \vspace{1cm}
+    
+    % \large \textbf{Estudiante} \\
+    \printauthors
+    
+    \vspace{1cm}
+    
+    \printprof
+    
+    \vfill
+    
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \large \textbf{Fecha de la visita} \\ 24 de Abril, \the\year
+    \end{minipage}
+        \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \large \textbf{Fecha de entrega} \\ \the\day \ de Abril, \the\year
+    \end{minipage}
+    
+\end{titlepage}

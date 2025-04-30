@@ -1,0 +1,8 @@
+\section{Rotating tables} \label{sec:rotate}
+
+To place a single page table in a landscape mode start the table portion with {\tt\string\begin\{rotatetable\}} and end with {\tt\string\end\{rotatetable\}}.
+
+Tables that exceed a print page take a slightly different environment since both rotation and long table printing are required. In these cases start with {\tt\string\begin\{longrotatetable\}} and end with {\tt\string\end\{longrotatetable\}}. The {\tt\string\movetabledown} command can be used to help center extremely wide, landscape tables. The command {\tt\string\movetabledown=1in} will move any rotated table down 1 inch. 
+
+A handy "cheat sheet" that provides the necessary \latex\ to produce 17
+different types of tables is available at \url{http://journals.aas.org/authors/aastex/aasguide.html#table_cheat_sheet}.

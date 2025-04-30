@@ -1,0 +1,83 @@
+\section{A short history of AASTeX} 
+
+\latex\ \footnote{\url{http://www.latex-project.org/}} is a document markup
+language that is particularly well suited for the publication of
+mathematical and scientific articles \citep{lamport94}. \latex\ was written
+in 1985 by Leslie Lamport who based it on the \TeX\ typesetting language
+which itself was created by Donald E. Knuth in 1978.  In 1988 a suite of
+\latex\ macros were developed to investigate electronic submission and
+publication of AAS Journal articles \citep{1989BAAS...21..780H}.  Shortly
+afterwards, Chris Biemesdefer merged these macros and more into a \latex\
+2.08 style file called \aastex.  These early \aastex\ versions introduced
+many common commands and practices that authors take for granted today.
+Substantial revisions
+were made by Lee Brotzman and Pierre Landau when the package was updated to
+v4.0.  AASTeX v5.0, written in 1995 by Arthur Ogawa, upgraded to \latex\ 2e
+which uses the document class in lieu of a style file.  Other improvements
+to version 5 included hypertext support, landscape deluxetables and
+improved figure support to facilitate electronic submission.  
+\aastex\ v5.2 was released in 2005 and introduced additional graphics
+support plus new mark up to identifier astronomical objects, datasets and
+facilities.
+
+In 1996 Maxim Markevitch modified the AAS preprint style file, aaspp4.sty,
+to closely emulate the very tight, two column style of a typeset
+Astrophysical Journal article.  The result was emulateapj.sty. A year
+later Alexey Vikhlinin took over development and maintenance\footnote{\url{https://hea-www.harvard.edu/~alexey/emulateapj/}}. In 2001 he
+converted emulateapj into a class file in \latex\ 2e and in 2003 Vikhlinin
+completely rewrote emulateapj based on the APS Journal's REVTEX class.
+
+During this time emulateapj gained growing acceptance in the astronomical
+community as it filled an author need to obtain an approximate number of
+manuscript pages prior to submission for cost and length estimates. The
+tighter typeset also had the added advantage of saving paper when printing 
+hard copies.
+
+%% The "ht!" tells LaTeX to put the figure "here" first, at the "top" next
+%% and to override the normal way of calculating a float position.
+%% The asterisk after "figure" tells the compiler to span multiple columns
+%% if a two column style is selected.
+\begin{figure*}[ht!]
+\plotone{Resources/img/AuthorChargeInfographic.png}
+\caption{The AAS journals are operated as a nonprofit venture, and author charges fairly recapture costs for the services provided in the publishing process. The chart above breaks down the services that author charges go toward. The AAS Journals' Business Model is outlined in a \href{https://aas.org/posts/news/2023/08/aas-open-access-publishing-model-open-transparent-and-fair}{2023 post}.
+\label{fig:general}}
+\end{figure*}
+
+Even though author publication charges where no longer based on print pages
+\footnote{see Section \ref{sec:pubcharge} in the Appendix for more details
+about how current article costs are calculated. Figure \ref{fig:general} shows
+how author publication charges are currently spent.} the emulateapj class file
+proved to be extremely popular with AAS Journal authors.  An 
+analysis of submitted \latex\ manuscripts in 2015 revealed that $\sim$30\%
+either called emulateapj or had a commented emulateapj classfile call
+indicating it was used at some stage of the manuscript construction.
+Clearly authors wanted to have access to a tightly typeset version of the
+article when editing with co-authors and for preprint submissions.
+
+When planning the next \aastex\ release the popularity of emulateapj played
+an important roll in the decision to drop the old base code and adopt and
+modify emulateapj for \aastex\ v6.+.  Those changes brought \aastex\
+inline with what the majority of authors are already using while still
+delivering new and improved features.  \aastex\ v6.0 through v6.31 were
+developted by Amy Hendrickson\footnote{\url{https://www.texnology.com/about.htm}}.
+The release dates for the \aastex 6 versions were January 2016 (v6.0),
+October 2016 (v6.1), January 2018 (v6.2), June 2019 (v6.3), and March 2020
+(v6.3.1), respectively.
+
+\aastex\'s reliance on REVTeX, specifically v4-1, proved to be problematic when it was superseded in in January 2019. Rather than continue with REVTeX v4-2 as the base package of \aastex, Aptara\footnote{\url{https://www.aptaracorp.com}} was hire to rewrite \aastex from scratch while keeping the core functionality in early 2024. This new version, v7.0, was released in January 2025. Users of v6.3.1 will have little difficulty migrating to this new version with the core difference being that an email address is required for each author in v7.
+
+The rest of this article provides information and examples on how to create
+your own AAS Journal manuscript with v7.  Special emphasis is placed on
+how to use the full potential of \aastex. Note that some of the examples are commented out in this latex manuscript. The next section describes
+the different manuscript styles available.
+Section \ref{sec:floats} describes table and figure placement. 
+Specific examples of different table are provided,  Section
+\ref{subsec:tables}.
+Section \ref{sec:highlight}
+discuss how to properly highlight text added during revisions.  
+The last section,
+\ref{sec:cite}, shows how to recognize software and external data as first
+class references in the manuscript bibliography.  An appendix is included
+for additional information readers might find useful.
+More documentation is embedded in the comments of this \latex\ file and in the online documentation at
+\url{http://journals.aas.org/authors/aastex.html}.

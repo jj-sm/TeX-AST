@@ -1,0 +1,68 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{3dtools,calc}% https://github.com/marmotghost/tikz-3dtools
+\usetikzlibrary{angles,quotes}
+
+\begin{document}
+\begin{tikzpicture}[3d/install view={phi=4,theta=80},declare function={R=3;}] 
+\path (0,0,0) coordinate (O)
+    (R,0,0) coordinate (S)
+    (-R,0,0) coordinate (N)
+    (0,R,0) coordinate (E)
+    (0,-R,0) coordinate (W)
+    (0,0,R+0.04) coordinate (Z)
+    (0,0,-R-0.04) coordinate (Z')
+    ({-R*cos(84)}, 0, {R*sin(84)}) coordinate (EQC)
+    ({R*1.5*cos(4)}, 0, {(-R*1.5*sin(4))+0.03}) coordinate (SCP)
+    ({R*cos(4)}, 0, {(-R*sin(4))+0.03}) coordinate (SCP2)
+    ({-R*1.5*cos(4)}, 0, {-R*1.5*sin(-4)- 0.03}) coordinate (NCP)
+    ({-R*cos(4)}, 0, {-R*sin(-4)- 0.03}) coordinate (NCP2);
+    \draw   [3d/screen coords, black, line width=0.7pt] (O) circle[radius=R]; 
+    \path   pic[green]{3d/circle on sphere={R=R,C={(O)},n={(0,0,1)}}}
+            pic[blue]{3d/circle on sphere={R=R,C={(O)},n={(90,0,10)}}}
+
+            % pic[red]{3d/circle on sphere={R=R,C={(O)},n={(0,1,0)}}}
+            % pic[]{3d/circle on sphere={R=R,C={(O)},n={(1,0,0)}}}
+    ;
+
+% \draw[dotted, brown, line width=1.5pt] (O) -- (SCP2);
+
+
+% \draw[dotted, green, line width=2pt] (O) -- (N);
+% % \draw[thick] (A) -- (B) -- (C);
+% \pic [draw=green, fill=green!20, opacity=0.5, angle radius=1.7cm, "$\phi$"{anchor=south, yshift=-4.5mm, xshift=-7mm, text opacity=1}] {angle = NCP2--O--N};
+% \pic [draw=green, angle radius=3cm, line width=1.5pt, "$4^{\circ}$ N"{anchor=south, yshift=-5mm, xshift=8mm, text opacity=1}] {angle = NCP2--O--N};
+
+\draw[dotted, cyan, line width=1.5pt] (O) -- (EQC);
+\draw[dotted, cyan, line width=2pt] (O) -- (N);
+% \draw[dotted, cyan, line width=2pt] (O) -- (EQC);
+\pic [draw=cyan, fill=cyan!20, opacity=0.5, angle radius=1.5cm, "$h_{eq}$"{anchor=south, yshift=-2mm, text opacity=1}] {angle = EQC--O--N};
+\pic [draw=cyan, angle radius=3cm, line width=1.5pt, "$86^{\circ}$ BOG"{anchor=south, yshift=-3mm, xshift=-5mm, text opacity=1}] {angle = EQC--O--N};
+
+
+\draw[blue, line width=0.5pt] (SCP) -- (NCP);
+\path (NCP)+(200:5mm) node{NCP};
+\path (SCP)+(20:5mm) node{SCP};
+
+
+\draw[fill=blue] (O) circle (2 pt);
+\path (S)+(0:3mm) node{S};
+\path (N)+(180:3mm) node{N};
+\path (O)+(-90:3mm) node{O};
+\path (W)+(240:4mm) node{W};
+\path (E)+(50:3mm) node{E};
+\path (Z)+(90:3mm) node{Z};
+\path (Z')+(-90:3mm) node{Z'};
+
+\foreach \p in {S,N,W,Z,Z',E}{
+    \draw[fill=black] (\p) circle (1.2 pt);
+}
+
+\foreach \p in {SCP, NCP}{
+    \draw[fill=blue] (\p) circle (0.4 pt);
+}
+
+%  Temp
+\draw[fill=red] (EQC) circle (2 pt);
+
+\end{tikzpicture}
+\end{document} 
