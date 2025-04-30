@@ -6,7 +6,7 @@ Plantilla para informes y laboratorios de estudiantes de la Pontificia Universid
 
 > Disclamer 2: El uso de la plantilla no está ligado oficialmente a la UC, consulte con su curso si está permitido y **verifique** si esta plantilla cumple con las normas de estilo de su informe.
 
->[!INFO]
+>[!NOTE]
 >- Se usa `pdfTeX` para compilar el documento.
 >- Se usa el estilo bibliográfico para citas de **AAS Journals**, el cual se encuentra en `../Config/NoMod/aasjournalv7.bst` y puede ser reemplazado. En caso tal referenciarlo al final del documento principal.
 
