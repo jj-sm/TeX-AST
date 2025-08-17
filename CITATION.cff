@@ -1,0 +1,38 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: AST-FIZ TeX Template
+message: TeX Template for PUC students
+type: software
+authors:
+  - given-names: Juan José
+    family-names: Sánchez Medina
+    email: hello@jjsm.science
+    affiliation: Universidad Católica de Chile
+    orcid: 'https://orcid.org/0009-0005-4685-695X'
+  - name: American Astronomical Society
+    address: 1667 K Street NW
+    city: 'Washington, DC'
+    country: US
+    post-code: '20006'
+    email: aastex@aas.org
+    alias: AAS
+    website: 'https://journals.aas.org/'
+    location: ' Suite 800'
+repository-code: 'https://github.com/jj-sm/TeX-AST/'
+url: 'https://jjsm.science/projects/tex-ast/'
+repository: 'https://github.com/AASJournals/AASTeX7'
+abstract: >-
+  TeX templates to be used in lab reports, or thesis by
+  Pontificia Universidad Católica de Chile students, mainly
+  focused in those who are taking FIZ & AST courses.
+
+
+  This template was mainly taken from AASTeXv7 with a heavy
+  suite of modifications.
+keywords:
+  - TeX
+  - Template
+  - LaTeX
+license: LPPL-1.3c
