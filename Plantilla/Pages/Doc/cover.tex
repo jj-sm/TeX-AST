@@ -1,0 +1,141 @@
+\makeatletter
+
+% --- ORCID display toggle ---
+% \newif\iforcidbool
+% \orcidbooltrue   % or \orcidboolfalse to hide ORCIDs
+
+% --- Count authors ---
+\newcount\authorcount
+\def\countauthors#1{%
+    \authorcount=0%
+    \@for\@temp:=#1\do{\advance\authorcount by 1}%
+}
+
+% --- Process author list ---
+\def\@processauthors#1,#2\@nil{%
+    \ifx&#1&%
+    \else%
+        \expandafter\@processauthor#1\\%
+        \ifx&#2&%
+        \else%
+            \@processauthors#2\@nil%
+        \fi%
+    \fi%
+}
+
+% --- Process single author ---
+\def\@processauthor#1#2\\{%
+    \iforcidbool
+        \ifx\relax#1\relax
+            % ORCID empty → just the name
+            \textsc{#2}\\
+        \else
+            % ORCID present → linked name with logo
+            \href{https://orcid.org/#1}{\textsc{#2}%
+            \hspace{0.5mm} \includegraphics[height=0.7em]{Resources/misc/orcid-ID.png}}\\
+        \fi
+    \else
+        % ORCID toggle is off → always plain names
+        \textsc{#2}\\
+    \fi
+}
+
+% --- Print authors ---
+\newcommand{\printauthors}{%
+    \countauthors{\coverauthors}%
+    \begin{center}
+    \large\textbf{%
+        \ifnum\authorcount>1%
+            \studenttextplural%
+        \else%
+            \studenttextsingular%
+        \fi%
+    }
+    \end{center}\vspace{-0.35cm}%
+    \expandafter\@processauthors\coverauthors,\@nil%
+}
+
+% --- Print professors ---
+\newcommand{\printprof}{%
+    \countauthors{\coverprofessor}%
+    \begin{center}
+    \large\textbf{%
+        \ifnum\authorcount>1%
+            \professortextplural%
+        \else%
+            \professortextsingular%
+        \fi%
+    }
+    \end{center}\vspace{-0.35cm}%
+    \expandafter\@processauthors\coverprofessor,\@nil%
+}
+
+\newcommand{\printprofassist}{%
+    \countauthors{\coverassist}%
+    \begin{center}
+    \large\textbf{%
+        \ifnum\authorcount>1%
+            \assisttextplural%
+        \else%
+            \assisttextsingular%
+        \fi%
+    }
+    \end{center}\vspace{-0.35cm}%
+    \expandafter\@processauthors\coverassist,\@nil%
+}
+
+\makeatother
+
+
+
+
+\begin{center}
+% \thispagestyle{plain}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    % \textsc{\LARGE Pontificia Universidad Católica de Chile}\\[1cm] 
+    
+    \vspace{1.5cm}
+    % If you want to override the logo, uncomment the line below and use and comment \coverlogo
+    % \includegraphics[height=6cm]{Resources/logos/AST-center-black.png}
+    \includegraphics[scale=\coversubjectlogoscale]{Resources/logos/\coversubjectlogo}
+    
+\vspace{1cm}
+\HRule
+\vspace{0.2cm} % space ABOVE the title
+
+{\huge \bfseries \centering \largetitlename \par}
+
+\vspace{0.2cm} % space BELOW the title
+\HRule
+
+    
+    \vfill
+    
+    \large \textbf{Asignatura} \\
+    \textsc{\subjectcode} - \subjecttext
+    
+    \vspace{1cm}
+    
+    % \large \textbf{Estudiante} \\
+    \printauthors
+    
+    \printprof
+
+    \printprofassist
+    
+    \vfill
+    
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \large \textbf{Fecha del Laboratorio} \\ \docinitdate, \the\year
+    \end{minipage}
+        \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \large \textbf{Fecha del Informe} \\ \the\day \ de \docfinalmonth, \the\year
+    \end{minipage}
+    
+\end{center}
+\thispagestyle{empty}
+\clearpage

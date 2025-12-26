@@ -2196,7 +2196,6 @@ ltxfront%
 \def\@affil@match#1#2#3#4#5{%
  \temp@sw{}{%
   \def\@tempifx{#4}%
-  \@ifx{\@tempifx#1}{%
    \groupauthors@sw{%
     \@ifnum{#3=\c@collab}{%
      \true@sw
@@ -2216,7 +2215,6 @@ ltxfront%
   }{%
   }%
  }%
-}%
 \def\move@AUAF{%
  \frontmatterverbose@sw{\say\AU@grp\say\AF@grp\say\CO@grp}{}%
  \@ifx{\AF@grp\@empty}{%
@@ -2421,7 +2419,8 @@ ltxfront%
 \hsize = 478pt
 \fi
    \@parboxrestore
-   \def\@mpfn{mpfootnote}\def\thempfn{\thempfootnote)}\c@mpfootnote\z@ % 
+   % [MOD] \def\@mpfn{mpfootnote}\def\thempfn{\thempfootnote)}\c@mpfootnote\z@ 
+   \def\@mpfn{mpfootnote}\def\thempfn{\thempfootnote}\c@mpfootnote\z@ % 
    \minipagefootnote@init
    \let\set@listindent\set@listindent@
    \let\@listdepth\@mplistdepth \@mplistdepth\z@
@@ -6733,7 +6732,7 @@ ltxgrid%
 \def\figuresname{Figures}%
 \def\tablename{Table}
 \def\tablesname{Tables}%
-\def\abstractname{Abstract}
+% \def\abstractname{Abstract}
 \def\appendixesname{Appendixes}%
 \def\appendixname{Appendix}%
 \def\acknowledgmentsname{ACKNOWLEDGMENTS}
@@ -7283,7 +7282,7 @@ ltxgrid%
 
 %  \@twosidetrue
 
-%% running heads:
+% running heads:
 \def\lefthead#1{\gdef\@versohead{#1}} \lefthead{\relax}
 \def\righthead#1{\ifanonymous\gdef\@rectohead{Anonymous author(s)}\else\gdef\@rectohead{#1}\fi} \righthead{\relax}
 \let\shorttitle\lefthead
@@ -7972,11 +7971,14 @@ For more details, see:\\
 \def\appendix{\global\appendixontrue
 \if@two@col  
 \onecolumngrid
-\noindent\mbox{}\vrule height 24pt width0pt\hfill{\apjsecfont APPENDIX}\hfill\mbox{}\par\vskip18pt
+\noindent\mbox{}\vrule height 24pt width0pt\hfill{\apjsecfont \MakeUppercase{\appendixname}
+}\hfill\mbox{}\par\vskip18pt
    \if@two@col@app\global\@two@coltrue\twocolumngrid \fi
    % above, we want onecolumngrid to be default. Only twocolumn is asked for in documentclass option
 \else
-\noindent\mbox{}\vrule height 24pt width0pt\hfill{\apjsecfont APPENDIX}\hfill\mbox{}\par 
+\noindent\mbox{}\vrule height 24pt width0pt\hfill{\apjsecfont 
+\MakeUppercase{\appendixname}
+}\hfill\mbox{}\par 
 \vskip18pt
     \if@two@col@app\global\@two@coltrue\twocolumngrid 
          \fi\fi
@@ -8023,13 +8025,15 @@ For more details, see:\\
 %  ****************************************
 
 \newenvironment{references}[0]{
-  \onecolumngrid
+  % \onecolumngrid
+  \twocolumngrid
   \par
   \vspace{10pt plus 3pt}
-  \noindent \makebox[\textwidth][c]{\small\scshape REFERENCES}
+  \noindent\makebox[\textwidth][c]{\small\scshape REFERENCES}
   \par
   \vspace*{4pt plus 3pt}
-  \set@column@hsize{2}\twocolumngrid 
+  \set@column@hsize{1}
+  % \twocolumngrid 
 %% Jan29, 2021, added \ifonecolstyle, \ifpreprinttwo
 \ifnumlines
 \ifonecolstyle
@@ -8043,7 +8047,7 @@ For more details, see:\\
   \frenchspacing    % AV - to get right spacing after ``et al.'' 
   \def\refpar{\par\hangindent=1.2em\hangafter=1}}
 {
-  \onecolumngrid
+  % \onecolumngrid
 }
 
 % redefine thebibliography
@@ -8058,12 +8062,13 @@ For more details, see:\\
 \newdimen\bibindent
 
 \newenvironment{thebibliography}[1]{\global\bibtrue
+% [MOD] - Comentar abajo para colocar referencias en una sola columna.
 \onecolumngrid 
 \vspace{20pt}
 \goodbreak
   % \hbox to\textwidth{\hss\normalsize REFERENCES\hss} %% [MOD]
-  \hbox to\textwidth{\hss\normalsize \MakeUppercase{\refname}\hss}
-\vspace{6pt}\parskip=0pt
+  \hbox to\columnwidth{\hss\normalsize \MakeUppercase{\refname}\hss}
+\vspace{2pt}\parskip=0pt
 \twocolumngrid\@twocolumntrue
 \ifonecolstyle\advance\linenumbersep 12pt\fi% 
 %% Jan29, 2021, added \ifonecolstyle
@@ -8229,7 +8234,7 @@ For more details, see:\\
 
  \let\fnum@ptable=\fnum@table
  \def\fnum@ptablecont{{\centering{\scshape Table~\thetable}---{\itshape
- Continued}}}% 
+ Continúa}}}% 
  \long\def\@make@caption@text#1#2{% 
    {\small\centering#1{\scshape #2}\par\vskip1.4ex}
  }% 
@@ -8263,8 +8268,7 @@ For more details, see:\\
 %%
 \fontdimen2\foo=3pt %% Changed from 1.5pt to 3pt, March12, 2019
 %%
-{\large \it Software: }
-#2
+{\large \it Software: }#2
 %% returning to original fontdimen
 \iftwelvepoint
 \fontdimen2\foo=3.91663pt
@@ -8274,6 +8278,24 @@ For more details, see:\\
 }\egroup}
 
 
+\long\def\softwarecode{\bgroup\@testopt \@softwarecode {[}}
+\def\@softwarecode[#1]#2{\vskip 6pt{
+\frenchspacing
+\iftwelvepoint
+\font\foo=cmr12
+\else
+\font\foo=cmr10\fi
+%%
+\fontdimen2\foo=3pt %% Adjusted spacing for better appearance
+%%
+{\large \it Código Usado: }#2
+%% Resetting to original fontdimen
+\iftwelvepoint
+\fontdimen2\foo=3.91663pt
+\else
+\fontdimen2\foo=3.33333pt
+\fi
+}\egroup}
 
 
 
@@ -8613,7 +8635,7 @@ For more details, see:\\
 \hskip\tabcolsep\\[.7ex]
   \hline\\[-1.5ex]
   \endfirsthead
-  \caption[]{--- \emph{Continued}}\\
+  \caption[]{--- \emph{Continúa}}\\
   \hline
   \hline\\[-1.7ex]
   #1\hskip\tabcolsep\\[.7ex]
@@ -11688,7 +11710,7 @@ to\hsize{\hss\vtop{\hsize=\wd0
 \endfirsthead
 
 \noalign{\centerline{\small 
-\hskip\movetableright{\bf \fnum@table}\ \it(continued)}\vskip6pt}
+\hskip\movetableright{\bf \fnum@table}\ \it(Continúa)}\vskip6pt}
 \hline\hline
 \noalign{\advance\toprulebelowsep-\f@size pt \vskip-\toprulebelowsep}
 \pt@head%
@@ -11697,7 +11719,7 @@ to\hsize{\hss\vtop{\hsize=\wd0
 \hline
 \multicolumn{\totalcolumns}{c}{\vrule height 24pt width0pt\small\it
 \fnum@table\
-continued  \if@two@col\else on next page\fi}\\ 
+Continúa  \if@two@col\else on next page\fi}\\ 
 \endfoot
 
 \hline%\nobreak
@@ -12071,7 +12093,7 @@ to\hsize{\hss\vtop{\hsize=\maxtablewidth\caption{\@tablecaption}}\hss}\vskip3pt\
 }
 
 \def\tablecomments#1{\vskip1pt{\small\vskip1sp\indent\vrule height 11pt depth 2pt
-width 0pt\currtabletypesize{\sc Note}---{#1}\vskip1pt}}
+width 0pt\currtabletypesize{\sc Nota}---{#1}\vskip1pt}}
 
 \def\tablenotetext#1#2{\vskip1pt{\currtabletypesize\vskip1pt\indent\vrule
 height 11pt depth
@@ -12490,13 +12512,48 @@ by 1\relax}\ignorespaces}%
 \uppercase{#1}}}\vss}}\hss}}
 \let\thewatermark\empty
 
-%% Used in titlepage definition, as \pagestyle{titlepage}
+% Used in titlepage definition, as \pagestyle{titlepage}
+% [MOD] - To allow header on first page after cover.tex
+
 \def\ps@titlepage{%
-  \let\@mkboth\@gobbletwo
-\def\@oddhead{\ifx\thewatermark\empty\hfill\else
-\hbox to \textwidth{\rlap{\thewatermark}\hfill}\fi}
-\let\@oddfoot\@empty
-\let\@evenhead\@empty\let\@evenfoot\@empty}
+  \let\@mkboth\markboth % allow marks for running headers
+  \def\@evenfoot{}%
+  \def\@oddfoot{}%
+  \def\@evenhead{%
+    \vbox{%
+      \vskip9mm
+      \hbox to\textwidth{%
+        \rm\thepage\hfill\textsc{\@rectohead}\hfill
+      }%
+      \vskip4pt
+      \hrule height 0.4pt
+    }%
+  }%
+  \def\@oddhead{%
+    \vbox{%
+      \vskip9mm
+      \hbox to\textwidth{%
+        \hfil\rm\textsc{\@versohead}\hfil \rm\thepage
+      }%
+      \vskip4pt
+      \hrule height 0.4pt
+    }%
+  }%
+  % Optional: overlay watermark on top of headers
+  \ifx\thewatermark\empty\else
+    \def\@evenhead{\hbox to \textwidth{\rlap{\thewatermark}\hfill}}%
+    \def\@oddhead{\hbox to \textwidth{\rlap{\thewatermark}\hfill}}%
+  \fi
+}
+
+
+% \def\ps@titlepage{%
+%   \let\@mkboth\@gobbletwo
+% \def\@oddhead{\ifx\thewatermark\empty\hfill\else
+% \hbox to \textwidth{\rlap{\thewatermark}\hfill}\fi}
+% \let\@oddfoot\@empty
+% \let\@evenhead\@empty\let\@evenfoot\@empty
+% }
 
 % end of watermark definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -12652,6 +12709,22 @@ changenum\the\refchangenumber\endcsname{\bf
 
 
 \usepackage[normalem]{ulem}
+
+% [MOD]
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{lipsum}
+\usepackage{multirow}
+\usepackage{soul}
+\usepackage{todonotes}
+\newcommand{\diff}{\mathop{}\!\mathrm{d}}
+
+\newcommand{\cint}{%
+  \mathop{%
+    \vcenter{\hbox{\(\displaystyle\int\mkern-18mu C\)}}%
+  }\nolimits%
+}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -13714,7 +13787,7 @@ Affiliations\vrule depth 18pt width0pt}\nobreak
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Highlight Figure
-\definecolor{ltblue}{cmyk}{.5,.1,.1,0}
+\definecolor{ltblue}{cmyk}{.0,.0,.0,0}
 \newdimen\currwidth
 \long\def\highlightfigure#1{
 \bgroup

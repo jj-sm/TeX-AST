@@ -1,0 +1,356 @@
+%% Version 7. Created January 2025.  
+%%
+%% AASTeX v7 calls the following external packages:
+%% times, hyperref, ifthen, hyphens, longtable, xcolor, 
+%% bookmarks, array, rotating, ulem, and lineno 
+%%
+%% RevTeX is no longer used in AASTeX v7.
+%%
+%% [MOD] s in .cls have been made. Look for them with the [MOD] tag.
+
+\documentclass[preprint2]{aastex7}
+
+%%
+%% This initial command takes arguments that can be used to easily modify 
+%% the output of the compiled manuscript. Any combination of arguments can be 
+%% invoked like this:
+%%
+%% \documentclass[argument1,argument2,argument3,...]{aastex7}
+%%
+%% Six of the arguments are typestting options. They are:
+%%
+%%  twocolumn   : two text columns, 10 point font, single spaced article.
+%%                This is the most compact and represent the final published
+%%                derived PDF copy of the accepted manuscript from the publisher
+%%  default     : one text column, 10 point font, single spaced (default).
+%%  manuscript  : one text column, 12 point font, double spaced article.
+%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint2   : two text columns, 12 point font, single spaced article.
+%%  modern      : a stylish, single text column, 12 point font, article with
+%% 		  wider left and right margins. This uses the Daniel
+%% 		  Foreman-Mackey and David Hogg design.
+%%
+%% Note that you can submit to the AAS Journals in any of these 6 styles.
+%%
+%% There are other optional arguments one can invoke to allow other stylistic
+%% actions. The available options are:
+%%
+%%   astrosymb    : Loads Astrosymb font and define \astrocommands. 
+%%   tighten      : Makes baselineskip slightly smaller, only works with 
+%%                  the twocolumn substyle.
+%%   times        : uses times font instead of the default.
+%%   linenumbers  : turn on linenumbering. Note this is mandatory for AAS
+%%                  Journal submissions and revisions.
+%%   trackchanges : Shows added text in bold.
+%%   longauthor   : Do not use the more compressed footnote style (default) for 
+%%                  the author/collaboration/affiliations. Instead print all
+%%                  affiliation information after each name. Creates a much 
+%%                  longer author list but may be desirable for short 
+%%                  author papers.
+%% twocolappendix : make 2 column appendix.
+%%   anonymous    : Do not show the authors, affiliations, acknowledgments,
+%%                  and author contributions for dual anonymous review.
+%%  resetfootnote : Reset footnotes to 1 in the body of the manuscript.
+%%                  Useful when there are a lot of authors and affiliations
+%%		    in the front matter.
+%%   longbib      : Print article titles in the references. This option
+%% 		    is mandatory for PSJ manuscripts.
+%%
+%% Since v6, AASTeX has included \hyperref support. While we have built in 
+%% specific %% defaults into the classfile you can manually override them 
+%% with the \hypersetup command. For example,
+%%
+%% \hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
+%%
+%% will change the color of the internal links to red, the links to the
+%% bibliography to green, the file links to cyan, and the external links to
+%% magenta. Additional information on \hyperref options can be found here:
+%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
+%%
+%% The "bookmarks" has been changed to "true" in hyperref
+%% to improve the accessibility of the compiled pdf file.
+%%
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+%%
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+
+\makeatletter
+\let\frontmatter@title@above=\relax
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% Running header information. A short title on odd pages and 
+%% short author list on even pages. Note that this
+%% information may be modified in production.
+
+% ================================================ COVER =======================================================
+
+% Logos located at Resources/logos/...
+\def\coversubjectlogo{AST-h-black.png} 
+\def\coversubjectlogoscale{0.6} 
+\def\largetitlename{Laboratorio 1: Análisis de Espectros Estelares}
+
+\newif\iforcidbool
+% \orcidboolfalse   % or 
+\orcidbooltrue
+\def\studenttextsingular{Integrantes}
+\def\studenttextplural{Integrantes}
+
+\def\coverauthors{
+    {0009-0005-4685-695X}{Juan José Sánchez Medina},
+    {}{Henrietta Leavitt},
+    {}{Stephen Hawking}
+}
+
+
+\def\professortextsingular{Profesor}
+\def\professortextplural{Profesores}
+\def\coverprofessor{
+    {0000-0000-0000-0000}{Isaac Newton}
+}
+
+\def\assisttextsingular{Ayudante}
+\def\assisttextplural{Ayudantes}
+\def\coverassist{
+    {}{Marie Curie}
+}
+
+\def\docinitdate{6 de noviembre}
+\def\docfinalmonth{noviembre}
+
+\def\subjectcode{AST067}
+\def\subjecttext{Laboratorio de Astronomía}
+
+% ================================================ HEADER ======================================================
+\shorttitle{Informe Laboratorio 01}
+\shortauthors{Grupo 2070}
+%%
+%% Include dates for submitted, revised, and accepted.
+%%\received{February 1, 2025}
+%%\revised{March 1, 2025}
+%%\accepted{\today}
+%%
+%% Indicate AAS Journal the manuscript was submitted to.
+%%\submitjournal{PSJ}
+%% Note that this command adds "Submitted to " the argument.
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+%% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%% \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Use this command to indicate a subdirectory where figures are located.
+%%\graphicspath{{./}{figures/}}
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
+
+\def\partname{Parte}
+\def\tocname{Contenidos}
+\def\lofname{Lista de Figuras}
+\def\lotname{Lista de Tablas}
+\def\refname{Referencias}
+\def\indexname{Índice}
+\def\figurename{Figura}
+\def\figuresname{Figuras}%
+\def\tablename{Tabla}
+\def\tablesname{Tablas}%
+\def\abstractname{RESUMEN}
+\def\appendixesname{Apéndices}%
+\def\appendixname{Apéndice}%
+\def\facilitiesname{Lugares}
+
+
+\begin{document}
+\input{Pages/Doc/cover.tex}
+
+
+% \title{\Large{\largetitlename}}
+\title{\Large{}}
+
+
+% ================================================ AUTHORS =====================================================
+%% A significant change from AASTeX v6+ is in the author blocks. Now an email
+%% address is required for each author. This means that each author requires
+%% at least one of the following:
+%%
+% \author
+% \affiliation
+% \email
+
+%% If these three commands are not available for each author, the latex
+%% compiler will issue an error and if you force the latex compiler to continue,
+%% it will generate an incomplete pdf.
+%%
+%% Multiple \affiliation commands are allowed and authors can also include
+%% an optional \altaffiliation to indicate a status, i.e. Hubble Fellow. 
+%% while affiliations are indexed as footnotes, altaffiliations are noted with
+%% with a non-numeric footnote that is set away from the numeric \affiliation 
+%% footnotes. NOTE that if an \altaffiliation command is used it must 
+%% come BEFORE the \affiliation call, right after the \author command, in 
+%% order to place the footnotes in the proper location. Because non-numeric
+%% symbols are used, \altaffiliation should be used sparingly.
+%%
+%% In v7 the \author command takes an optional argument which provides 
+%% additional metadata about the author. Authors can provide the 16 digit 
+%% ORCID, the surname (family or last) name, the given (first or fore-) name, 
+%% and a name suffix, e.g. "Jr.". The syntax is:
+%%
+%% \author[orcid=0000-0002-9072-1121,gname=Gregory,sname=Schwarz]{Greg Schwarz}
+%%
+%% This name metadata in not shown, it is only for parsing by the peer review
+%% system so authors can be more easily identified. This name information will
+%% also be sent to the publisher so they can include it in the CROSSREF 
+%% metadata. Including an orcid will hyperlink the author name to the 
+%% author's ORCID page. Note that  during compilation, LaTeX will do some 
+%% limited checking of the format of the ID to make sure it is valid. If 
+%% the "orcid-ID.png" image file is  present or in the LaTeX pathway, the 
+%% ORCID icon will appear next to the authors name.
+%%
+%% Even though emails are now required for each author, the \email does not
+%% produce output in the compiled manuscript unless the optional "show" command
+%% is used. For example,
+%%
+% \email[show]{greg.schwarz@aas.org}
+%%
+%% All "shown" emails are show in the bottom left of the first page. Due to
+%% space constraints, only a few emails should be shown. 
+%%
+%% To identify a corresponding author, use the \correspondingauthor command.
+%% The command appends "Corresponding Author: " to the argument it appears at
+%% the bottom left of the first page like the output from \email. 
+
+% \input{Authors.tex}
+
+% \collaboration{all}{The Terra Mater collaboration}
+
+%% Use the \collaboration command to identify collaborations. This command
+%% takes an optional argument that is either a number or the word "all"
+%% which tells the compiler how many of the authors above the command to
+%% show. For example "\collaboration[all]{(DELVE Collaboration)}" wil include
+%% all the authors above this command.
+%%
+%% Mark off the abstract in the ``abstract'' environment. 
+
+\input{Pages/Doc/abstract.tex}
+
+% ================================================ KEYWORDS ====================================================
+\input{Keywords.tex}
+
+%% From the front matter, we move on to the body of the paper.
+%% Sections are demarcated by \section and \subsection, respectively.
+%% Observe the use of the LaTeX \label
+%% command after the \subsection to give a symbolic KEY to the
+%% subsection for cross-referencing in a \ref command.
+%% You can use LaTeX's \ref and \label commands to keep track of
+%% cross-references to sections, equations, tables, and figures.
+%% That way, if you change the order of any elements, LaTeX will
+%% automatically renumber them.
+
+% =============================================== MAIN BODY ====================================================
+\input{Pages/Sections/1_objetivos}
+\input{Pages/Sections/2_intro_y_marco_teorico}
+\input{Pages/Sections/3_montaje_experimental}
+\input{Pages/Sections/4_resultados_y_analisis}
+\input{Pages/Sections/5_discuciones}
+\input{Pages/Sections/6_conclusiones}
+\input{Pages/Sections/preguntas.tex}
+
+
+% ====================================== ACKNOWLEDGMENT & CONTRIBUTIONS =========================================
+%% Please use the acknowledgment and contribution environments. This will 
+%% be anonomyized when the "anonymous" style option is used. 
+\input{Pages/Doc/acknowledgments.tex}
+
+% \input{Pages/Doc/contribution.tex}
+
+% ============================================== FACILITIES ====================================================
+%% To help institutions obtain information on the effectiveness of their 
+%% telescopes the AAS Journals has created a group of keywords for telescope 
+%% facilities.
+%
+%% Following the acknowledgments section, use the following syntax and the
+%% \facility{} or \facilities{} macros to list the keywords of facilities used 
+%% in the research for the paper.  Each keyword is check against the master 
+%% list during copy editing.  Individual instruments can be provided in 
+%% parentheses, after the keyword, but they are not verified.
+
+\facilities{Laboratorio Física UC}
+
+% ================================================ SOFTWARE ====================================================
+%% Similar to \facility{}, there is the optional \software command to allow 
+%% authors a place to specify which programs were used during the creation of 
+%% the manuscript. Authors should list each code and include either a
+%% citation or url to the code inside ()s when available.
+
+% Anadir sklearn, scipy.stats
+\software{
+    Python - Jupyter Notebook \citep{jupyter}, SciPy (Python) \citep{scipy}, Sk-learn (Python) \citep{scikit-learn}, 
+    \LaTeX \citep{1989BAAS...21..780H}, \TeX \ Template \citep{Sanchez_Medina_AST-FIZ_TeX_Template_2025}.
+}
+
+\softwarecode{
+    The code used to perform the analysis in this work is available at: \url{https://github.com/jj-sm}{GitHub}
+}
+
+% ============================================== APENDIX ======================================================
+%% Appendix material should be preceded with a single \appendix command.
+%% There should be a \section command for each appendix. Mark appendix
+%% subsections with the same markup you use in the main body of the paper.
+%%
+%% Each Appendix (indicated with \section) will be lettered A, B, C, etc.
+%% The equation counter will reset when it encounters the \appendix
+%% command and will number appendix equations (A1), (A2), etc. The
+%% Figure and Table counter will not reset.
+
+% \appendix
+
+% % \input{Pages/Appendix/information.tex}
+% % \input{Pages/Appendix/author.tex}
+% \input{Pages/Appendix/tables.tex}
+% % \input{Pages/Appendix/lang.tex}
+
+
+% ============================================== BIBLIOGRAPHY ==================================================
+%% For this sample we use BibTeX plus aasjournalv7.bst to generate the
+%% the bibliography. The sample7.bib file was populated from ADS. To
+%% get the citations to show in the compiled file do the following:
+%%
+%% pdflatex sample7.tex
+%% bibtext sample7
+%% pdflatex sample7.tex
+%% pdflatex sample7.tex
+
+\bibliography{Bibliography}
+\bibliographystyle{Config/NoMod/aasjournalv7.bst}
+% \bibliographystyle{authortitle}
+
+\appendix
+
+% \input{Pages/Appendix/information.tex}
+% \input{Pages/Appendix/author.tex}
+\input{Pages/Appendix/tables.tex}
+% \input{Pages/Appendix/lang.tex}
+
+%% This command is needed to show the entire author+affiliation list when
+%% the collaboration and author truncation commands are used.  It has to
+%% go at the end of the manuscript.
+%\allauthors
+
+%% Include this line if you are using the \added, \replaced, \deleted
+%% commands to see a summary list of all changes at the end of the article.
+%\listofchanges
+
+\end{document}
+
+% End of file `sample7.tex'.
