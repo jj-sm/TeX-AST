@@ -1,0 +1,110 @@
+% ==============================================================================================================
+% ================================================ INPUT =======================================================
+% ==============================================================================================================
+
+
+% ================================================ COVER =======================================================
+
+% Logos located at Resources/logos/...
+\def\coversubjectlogo{AST-h-black.png} 
+\def\coversubjectlogoscale{0.6} 
+\def\largetitlename{Laboratorio 1: Análisis de Espectros Estelares}
+
+% Select wether you want to include ORCID iDs and links
+\newif\iforcidbool
+% \orcidboolfalse   % or 
+\orcidbooltrue
+\def\studenttextsingular{Integrantes}
+\def\studenttextplural{Integrantes}
+
+% --- Authors ---
+\def\coverauthors{
+    {0009-0005-4685-695X}{Juan José Sánchez Medina},
+    {}{Henrietta Leavitt},
+    {}{Stephen Hawking}
+}
+
+% --- Professors ---
+\def\professortextsingular{Profesor}
+\def\professortextplural{Profesores}
+\def\coverprofessor{
+    {0000-0000-0000-0000}{Isaac Newton}
+}
+
+% --- Assistants ---
+\def\assisttextsingular{Ayudante}
+\def\assisttextplural{Ayudantes}
+\def\coverassist{
+    {}{Marie Curie}
+}
+
+% --- Lab Date ---
+\def\docinitdate{6 de noviembre}
+% --- Final Date ---
+\def\docfinalmonth{noviembre}
+
+% --- Subject Details ---
+\def\subjectcode{AST067}
+\def\subjecttext{Laboratorio de Astronomía}
+
+
+% ================================================ HEADER ======================================================
+\shorttitle{Informe Laboratorio 01}
+\shortauthors{Grupo 2070}
+
+%% Include dates for submitted, revised, and accepted.
+%%\received{February 1, 2025}
+%%\revised{March 1, 2025}
+%%\accepted{\today}
+%%
+%% Indicate AAS Journal the manuscript was submitted to.
+%%\submitjournal{PSJ}
+%% Note that this command adds "Submitted to " the argument.
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+%% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%% \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Use this command to indicate a subdirectory where figures are located.
+%%\graphicspath{{./}{figures/}}
+
+% =============================================== PREAMBLE =======================================================
+
+% --- Custom Imports ---
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{lipsum}
+\usepackage{multirow}
+\usepackage{soul}
+\usepackage{todonotes}
+
+% --- Custom Commands ---
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+\newcommand{\diff}{\mathop{}\!\mathrm{d}}
+\newcommand{\cint}{%
+  \mathop{%
+    \vcenter{\hbox{\(\displaystyle\int\mkern-18mu C\)}}%
+  }\nolimits%
+}
+
+
+\makeatletter
+\let\frontmatter@title@above=\relax
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% Running header information. A short title on odd pages and 
+%% short author list on even pages. Note that this
+%% information may be modified in production.
+

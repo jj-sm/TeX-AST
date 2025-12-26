@@ -9,6 +9,7 @@
 %% [MOD] s in .cls have been made. Look for them with the [MOD] tag.
 
 \documentclass[preprint2]{aastex7}
+\input{Input.tex}
 
 %%
 %% This initial command takes arguments that can be used to easily modify 
@@ -74,86 +75,8 @@
 %% using \newcommand. Your macros should appear before
 %% the \begin{document} command.
 %%
-\newcommand{\vdag}{(v)^\dagger}
-\newcommand\aastex{AAS\TeX}
-\newcommand\latex{La\TeX}
 
-\makeatletter
-\let\frontmatter@title@above=\relax
-\makeatother
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% The following section outlines numerous optional output that
-%% can be displayed in the front matter or as running meta-data.
-%%
-%% Running header information. A short title on odd pages and 
-%% short author list on even pages. Note that this
-%% information may be modified in production.
-
-% ================================================ COVER =======================================================
-
-% Logos located at Resources/logos/...
-\def\coversubjectlogo{AST-h-black.png} 
-\def\coversubjectlogoscale{0.6} 
-\def\largetitlename{Laboratorio 1: Análisis de Espectros Estelares}
-
-\newif\iforcidbool
-% \orcidboolfalse   % or 
-\orcidbooltrue
-\def\studenttextsingular{Integrantes}
-\def\studenttextplural{Integrantes}
-
-\def\coverauthors{
-    {0009-0005-4685-695X}{Juan José Sánchez Medina},
-    {}{Henrietta Leavitt},
-    {}{Stephen Hawking}
-}
-
-
-\def\professortextsingular{Profesor}
-\def\professortextplural{Profesores}
-\def\coverprofessor{
-    {0000-0000-0000-0000}{Isaac Newton}
-}
-
-\def\assisttextsingular{Ayudante}
-\def\assisttextplural{Ayudantes}
-\def\coverassist{
-    {}{Marie Curie}
-}
-
-\def\docinitdate{6 de noviembre}
-\def\docfinalmonth{noviembre}
-
-\def\subjectcode{AST067}
-\def\subjecttext{Laboratorio de Astronomía}
-
-% ================================================ HEADER ======================================================
-\shorttitle{Informe Laboratorio 01}
-\shortauthors{Grupo 2070}
-%%
-%% Include dates for submitted, revised, and accepted.
-%%\received{February 1, 2025}
-%%\revised{March 1, 2025}
-%%\accepted{\today}
-%%
-%% Indicate AAS Journal the manuscript was submitted to.
-%%\submitjournal{PSJ}
-%% Note that this command adds "Submitted to " the argument.
-%%
-%% You can add a light gray and diagonal water-mark to the first page 
-%% with this command:
-%% \watermark{text}
-%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
-%% long you can control the water-mark size with:
-%% \setwatermarkfontsize{dimension}
-%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% Use this command to indicate a subdirectory where figures are located.
-%%\graphicspath{{./}{figures/}}
-%% This is the end of the preamble.  Indicate the beginning of the
-%% manuscript itself with \begin{document}.
+%% This is the end of the preamble.
 
 \def\partname{Parte}
 \def\tocname{Contenidos}
@@ -171,10 +94,12 @@
 \def\facilitiesname{Lugares}
 
 
+% >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> BEGIN DOCUMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 \begin{document}
+
 \input{Pages/Doc/cover.tex}
 
-
+% ================================================ TITLE =======================================================
 % \title{\Large{\largetitlename}}
 \title{\Large{}}
 
@@ -242,9 +167,11 @@
 %%
 %% Mark off the abstract in the ``abstract'' environment. 
 
+% ================================================ ABSTRACT ======================================================
+
 \input{Pages/Doc/abstract.tex}
 
-% ================================================ KEYWORDS ====================================================
+% ================================================ KEYWORDS ======================================================
 \input{Keywords.tex}
 
 %% From the front matter, we move on to the body of the paper.
@@ -257,7 +184,8 @@
 %% That way, if you change the order of any elements, LaTeX will
 %% automatically renumber them.
 
-% =============================================== MAIN BODY ====================================================
+% =============================================== MAIN CONTENT ====================================================
+
 \input{Pages/Sections/1_objetivos}
 \input{Pages/Sections/2_intro_y_marco_teorico}
 \input{Pages/Sections/3_montaje_experimental}
@@ -267,14 +195,14 @@
 \input{Pages/Sections/preguntas.tex}
 
 
-% ====================================== ACKNOWLEDGMENT & CONTRIBUTIONS =========================================
+% ====================================== ACKNOWLEDGMENT & CONTRIBUTIONS ==========================================
 %% Please use the acknowledgment and contribution environments. This will 
 %% be anonomyized when the "anonymous" style option is used. 
 \input{Pages/Doc/acknowledgments.tex}
 
 % \input{Pages/Doc/contribution.tex}
 
-% ============================================== FACILITIES ====================================================
+% ============================================== FACILITIES ======================================================
 %% To help institutions obtain information on the effectiveness of their 
 %% telescopes the AAS Journals has created a group of keywords for telescope 
 %% facilities.
@@ -285,9 +213,10 @@
 %% list during copy editing.  Individual instruments can be provided in 
 %% parentheses, after the keyword, but they are not verified.
 
+% \facility{}
 \facilities{Laboratorio Física UC}
 
-% ================================================ SOFTWARE ====================================================
+% ================================================ SOFTWARE ======================================================
 %% Similar to \facility{}, there is the optional \software command to allow 
 %% authors a place to specify which programs were used during the creation of 
 %% the manuscript. Authors should list each code and include either a
@@ -303,7 +232,7 @@
     The code used to perform the analysis in this work is available at: \url{https://github.com/jj-sm}{GitHub}
 }
 
-% ============================================== APENDIX ======================================================
+% ================================================= APENDIX ======================================================
 %% Appendix material should be preceded with a single \appendix command.
 %% There should be a \section command for each appendix. Mark appendix
 %% subsections with the same markup you use in the main body of the paper.
@@ -315,13 +244,13 @@
 
 % \appendix
 
-% % \input{Pages/Appendix/information.tex}
-% % \input{Pages/Appendix/author.tex}
+% \input{Pages/Appendix/information.tex}
+% \input{Pages/Appendix/author.tex}
 % \input{Pages/Appendix/tables.tex}
-% % \input{Pages/Appendix/lang.tex}
+% \input{Pages/Appendix/lang.tex}
 
 
-% ============================================== BIBLIOGRAPHY ==================================================
+% ============================================== BIBLIOGRAPHY ====================================================
 %% For this sample we use BibTeX plus aasjournalv7.bst to generate the
 %% the bibliography. The sample7.bib file was populated from ADS. To
 %% get the citations to show in the compiled file do the following:
@@ -335,6 +264,8 @@
 \bibliographystyle{Config/NoMod/aasjournalv7.bst}
 % \bibliographystyle{authortitle}
 
+
+% ================================================ APPENDIX =====================================================
 \appendix
 
 % \input{Pages/Appendix/information.tex}

@@ -12710,22 +12710,6 @@ changenum\the\refchangenumber\endcsname{\bf
 
 \usepackage[normalem]{ulem}
 
-% [MOD]
-\usepackage{amsmath}
-\usepackage{cancel}
-\usepackage{lipsum}
-\usepackage{multirow}
-\usepackage{soul}
-\usepackage{todonotes}
-\newcommand{\diff}{\mathop{}\!\mathrm{d}}
-
-\newcommand{\cint}{%
-  \mathop{%
-    \vcenter{\hbox{\(\displaystyle\int\mkern-18mu C\)}}%
-  }\nolimits%
-}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
