@@ -8,7 +8,10 @@
 %%
 %% [MOD] s in .cls have been made. Look for them with the [MOD] tag.
 
-\documentclass[preprint2]{aastex7}
+\documentclass[preprint2, en]{aastex7}
+
+\input{Config/Locales/internationalization.tex}
+
 \input{Input.tex}
 
 %%
@@ -77,22 +80,6 @@
 %%
 
 %% This is the end of the preamble.
-
-\def\partname{Parte}
-\def\tocname{Contenidos}
-\def\lofname{Lista de Figuras}
-\def\lotname{Lista de Tablas}
-\def\refname{Referencias}
-\def\indexname{Índice}
-\def\figurename{Figura}
-\def\figuresname{Figuras}%
-\def\tablename{Tabla}
-\def\tablesname{Tablas}%
-\def\abstractname{RESUMEN}
-\def\appendixesname{Apéndices}%
-\def\appendixname{Apéndice}%
-\def\facilitiesname{Lugares}
-
 
 % >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> BEGIN DOCUMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 \begin{document}

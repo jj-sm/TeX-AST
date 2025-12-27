@@ -1,0 +1,35 @@
+\makeatletter
+\@ifclasswith{aastex7}{es}{
+  % Spanish Definitions
+  \def\partname{Parte}%
+  \def\tocname{Contenidos}%
+  \def\lofname{Lista de Figuras}%
+  \def\lotname{Lista de Tablas}%
+  \def\refname{Referencias}%
+  \def\indexname{Índice}%
+  \def\figurename{Figura}%
+  \def\figuresname{Figuras}%
+  \def\tablename{Tabla}%
+  \def\tablesname{Tablas}%
+  \def\abstractname{RESUMEN}%
+  \def\appendixesname{Apéndices}%
+  \def\appendixname{Apéndice}%
+  \def\facilitiesname{Lugares}%
+}{
+  % English Definitions (Default)
+  \def\partname{Part}%
+  \def\tocname{Content}%
+  \def\lofname{Figures List}%
+  \def\lotname{Tables List}%
+  \def\refname{References}%
+  \def\indexname{Index}%
+  \def\figurename{Figure}%
+  \def\figuresname{Figures}%
+  \def\tablename{Table}%
+  \def\tablesname{Tables}%
+  \def\abstractname{ABSTRACT}%
+  \def\appendixesname{Appendices}%
+  \def\appendixname{Appendix}%
+  \def\facilitiesname{Facilities}%
+}
+\makeatother
