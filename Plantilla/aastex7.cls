@@ -6723,35 +6723,35 @@ ltxgrid%
 \DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
 \DeclareRobustCommand*\cal{\@fontswitch\relax\mathcal}
 \DeclareRobustCommand*\mit{\@fontswitch\relax\mathnormal}
-\def\today{\ifcase\month\or
-  January\or February\or March\or April\or May\or June\or
-  July\or August\or September\or October\or November\or December\fi
-  \space\number\day, \number\year}
-\def\partname{Part}
-\def\tocname{Contents}
-\def\lofname{List of Figures}
-\def\lotname{List of Tables}
-\def\refname{References}
-\def\indexname{Index}
-\def\figurename{Figure}
-\def\figuresname{Figures}%
-\def\tablename{Table}
-\def\tablesname{Tables}%
-% \def\abstractname{Abstract}
-\def\appendixesname{Appendixes}%
-\def\appendixname{Appendix}%
-\def\acknowledgmentsname{ACKNOWLEDGMENTS}
-\def\journalname{??}
-\def\copyrightname{??}
-\def\andname{and}
-\def\ppname{pp}
-\def\numbername{number}
-\def\volumename{volume}
-\def\Dated@name{Dated: }%
-\def\Received@name{Received }%
-\def\Revised@name{Revised }%
-\def\Accepted@name{Accepted }%
-\def\Published@name{Published }%
+% \def\today{\ifcase\month\or
+%   January\or February\or March\or April\or May\or June\or
+%   July\or August\or September\or October\or November\or December\fi
+%   \space\number\day, \number\year}
+% \def\partname{Part}
+% \def\tocname{Contents}
+% \def\lofname{List of Figures}
+% \def\lotname{List of Tables}
+% \def\refname{References}
+% \def\indexname{Index}
+% \def\figurename{Figure}
+% \def\figuresname{Figures}%
+% \def\tablename{Table}
+% \def\tablesname{Tables}%
+% % \def\abstractname{Abstract}
+% \def\appendixesname{Appendixes}%
+% \def\appendixname{Appendix}%
+% \def\acknowledgmentsname{ACKNOWLEDGMENTS}
+% \def\journalname{??}
+% \def\copyrightname{??}
+% \def\andname{and}
+% \def\ppname{pp}
+% \def\numbername{number}
+% \def\volumename{volume}
+% \def\Dated@name{Dated: }%
+% \def\Received@name{Received }%
+% \def\Revised@name{Revised }%
+% \def\Accepted@name{Accepted }%
+% \def\Published@name{Published }%
 
 \def\address{\replace@command\address\affiliation}%
 \def\altaddress{\replace@command\altaddress\altaffiliation}%
@@ -8034,7 +8034,7 @@ For more details, see:\\
   \twocolumngrid
   \par
   \vspace{10pt plus 3pt}
-  \noindent\makebox[\textwidth][c]{\small\scshape REFERENCES}
+  \noindent\makebox[\textwidth][c]{\small\scshape \MakeUppercase{\refname}}
   \par
   \vspace*{4pt plus 3pt}
   \set@column@hsize{1}

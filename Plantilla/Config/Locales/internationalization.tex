@@ -11,10 +11,48 @@
   \def\figuresname{Figuras}%
   \def\tablename{Tabla}%
   \def\tablesname{Tablas}%
-  \def\abstractname{RESUMEN}%
+  \def\abstractname{Resumen}%
   \def\appendixesname{Apéndices}%
   \def\appendixname{Apéndice}%
   \def\facilitiesname{Lugares}%
+  \def\today{\ifcase\month\or
+  Enero\or Febrero\or Marzo\or Abril\or Mayo\or Junio\or
+  Julio\or Agosto\or Septiembre\or Octubre\or Noviembre\or Diciembre\fi
+  \space\number\day, \number\year}
+  \def\partname{Parte}
+  \def\tocname{Contenidos}
+  \def\lofname{Lista de Figuras}
+  \def\lotname{Lista de Tablas}
+  \def\refname{Referencias}
+  \def\indexname{Índice}
+  \def\figurename{Figura}
+  \def\figuresname{Figuras}%
+  \def\tablename{Tabla}
+  \def\tablesname{Tablas}%
+  \def\appendixesname{Apéndices}%
+  \def\appendixname{Apéndice}%
+  \def\acknowledgmentsname{Agreadecimientos}
+  \def\journalname{??}
+  \def\copyrightname{??}
+  \def\andname{y}
+  \def\ppname{pp}
+  \def\numbername{número}
+  \def\volumename{volumen}
+  \def\Dated@name{Fecha }%
+  \def\Received@name{Recibido }%
+  \def\Revised@name{Revisado }%
+  \def\Accepted@name{Aceptado }%
+  \def\Published@name{Publicado }%
+  \def\LabDateName{Fecha del Laboratorio}%
+  \def\ReportDateName{Fecha del Informe}%
+  \def\CommonOfDate{de}
+  \def\SubjectTitleName{Asignatura}
+  \def\assisttextsingular{Ayudante}
+  \def\assisttextplural{Ayudantes}
+  \def\professortextsingular{Profesor}
+  \def\professortextplural{Profesores}
+  \def\studenttextsingular{Integrantes}
+  \def\studenttextplural{Integrantes}
 }{
   % English Definitions (Default)
   \def\partname{Part}%
@@ -31,5 +69,43 @@
   \def\appendixesname{Appendices}%
   \def\appendixname{Appendix}%
   \def\facilitiesname{Facilities}%
+  \def\today{\ifcase\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi
+  \space\number\day, \number\year}
+  \def\partname{Part}
+  \def\tocname{Contents}
+  \def\lofname{List of Figures}
+  \def\lotname{List of Tables}
+  \def\refname{References}
+  \def\indexname{Index}
+  \def\figurename{Figure}
+  \def\figuresname{Figures}%
+  \def\tablename{Table}
+  \def\tablesname{Tables}%
+  \def\appendixesname{Appendixes}%
+  \def\appendixname{Appendix}%
+  \def\acknowledgmentsname{ACKNOWLEDGMENTS}
+  \def\journalname{??}
+  \def\copyrightname{??}
+  \def\andname{and}
+  \def\ppname{pp}
+  \def\numbername{number}
+  \def\volumename{volume}
+  \def\Dated@name{Dated: }%
+  \def\Received@name{Received }%
+  \def\Revised@name{Revised }%
+  \def\Accepted@name{Accepted }%
+  \def\Published@name{Published }%
+  \def\LabDateName{Lab Date}%
+  \def\ReportDateName{Report Date}%
+  \def\CommonOfDate{of}%
+  \def\SubjectTitleName{Subject}%
+  \def\assisttextsingular{Assistant}%
+  \def\assisttextplural{Assistants}%
+  \def\professortextsingular{Professor}%
+  \def\professortextplural{Professors}%
+  \def\studenttextsingular{Member}%
+  \def\studenttextplural{Members}%
 }
 \makeatother

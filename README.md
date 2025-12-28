@@ -2,6 +2,9 @@
 
 Plantilla para informes y laboratorios de estudiantes de la Pontificia Universidad Católica de Chile enfocada en especial para ramos de FIZ y AST. Basada en [AASTeXv7](https://github.com/AASJournals/AASTeX7)
 
+>[!NOTE]
+> (27/Dic/2025) Ahora disponible en inglés y español, junto a mejoras menores.
+
 > Disclamer 1: En lo posible dar créditos a la plantilla como modificación de AASTeXv7 por [jj-sm](https://github.com/jj-sm/)
 
 > Disclamer 2: El uso de la plantilla no está ligado oficialmente a la UC, consulte con su curso si está permitido y **verifique** si esta plantilla cumple con las normas de estilo de su informe.
@@ -40,6 +43,9 @@ Puedes comenzar a trabajar desde el `.zip` en los últimos _releases_ [aquí](ht
 
 ## Uso
 Se han agregado nuevas funciones para adaptar esta plantilla correctamente a un uso en la UC. Por defecto, se agregaron comentarios en campos donde se espera que se ingresen los datos propios del documento, estos campos estarán señalados con el tag: `%% [UC-TeX][INPUT]`. Además, los comentarios que comiencen con `%% [UC-TeX]` indican un cambio por parte del equipo, mientras que los comentarios `%% [AASTeX]` indican el archivo y comentarios originales. 
+
+>[!NOTE]
+> Encontrarás un archivo llamado `input.tex` donde se deben llenar ciertos datos. Además hay que revisar el archivo `main.tex` donde allí se tienen que llenar el resto de información donde cada sección está denotada con un separador `=====`. 
 
 La plantilla cuenta con la siguiente estructura:
 
