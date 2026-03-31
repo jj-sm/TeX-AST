@@ -6,7 +6,7 @@
 
 % --- Count authors ---
 \newcount\authorcount
-\def\countauthors#1{%
+\def\countcoverauthors#1{%
     \authorcount=0%
     \@for\@temp:=#1\do{\advance\authorcount by 1}%
 }
@@ -42,7 +42,7 @@
 
 % --- Print authors ---
 \newcommand{\printauthors}{%
-    \countauthors{\coverauthors}%
+    \countcoverauthors{\coverauthors}%
     \begin{center}
     \large\textbf{%
         \ifnum\authorcount>1%
@@ -57,7 +57,7 @@
 
 % --- Print professors ---
 \newcommand{\printprof}{%
-    \countauthors{\coverprofessor}%
+    \countcoverauthors{\coverprofessor}%
     \begin{center}
     \large\textbf{%
         \ifnum\authorcount>1%
@@ -71,7 +71,7 @@
 }
 
 \newcommand{\printprofassist}{%
-    \countauthors{\coverassist}%
+    \countcoverauthors{\coverassist}%
     \begin{center}
     \large\textbf{%
         \ifnum\authorcount>1%
@@ -85,9 +85,6 @@
 }
 
 \makeatother
-
-
-
 
 \begin{center}
 % \thispagestyle{plain}
@@ -133,7 +130,7 @@
         \hfill
     \begin{minipage}[t]{0.45\textwidth}
         \centering
-        \large \textbf{\ReportDateName} \\ \the\day \ \CommonOfDate \docfinalmonth, \the\year
+        \large \textbf{\ReportDateName} \\ \the\day \ \CommonOfDate \ \docfinalmonth, \the\year
     \end{minipage}
     
 \end{center}
