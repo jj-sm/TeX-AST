@@ -55,5 +55,5 @@ jobs:
         with:
           tag_name: ${{ steps.vars.outputs.tag_name }}
           target_commitish: ${{ github.sha }}
-          name: Release ${{ steps.vars.outputs.tag_name }}
+          name: TeX-ASTFIZ ${{ steps.vars.outputs.tag_name }}
           files: ${{ steps.vars.outputs.archive_name }}
