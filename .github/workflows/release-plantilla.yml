@@ -1,0 +1,59 @@
+name: Release Plantilla on Tag
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Release tag (must start with v), e.g. v1.2.3"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Resolve release tag
+        id: vars
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.tag_name }}" ]; then
+            TAG_NAME="${{ inputs.tag_name }}"
+          else
+            TAG_NAME="${GITHUB_REF_NAME}"
+          fi
+
+          case "${TAG_NAME}" in
+            v*) ;;
+            *)
+              echo "Tag '${TAG_NAME}' is invalid. It must start with 'v'."
+              exit 1
+              ;;
+          esac
+
+          ARCHIVE_NAME="Plantilla-${TAG_NAME}.zip"
+          echo "tag_name=${TAG_NAME}" >> "$GITHUB_OUTPUT"
+          echo "archive_name=${ARCHIVE_NAME}" >> "$GITHUB_OUTPUT"
+
+      - name: Create release archive from Plantilla
+        run: |
+          ARCHIVE_NAME="${{ steps.vars.outputs.archive_name }}"
+          cd Plantilla
+          zip -r "../${ARCHIVE_NAME}" . -x ".gitignore"
+          cd ..
+
+      - name: Create GitHub Release and upload asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.vars.outputs.tag_name }}
+          target_commitish: ${{ github.sha }}
+          name: Release ${{ steps.vars.outputs.tag_name }}
+          files: ${{ steps.vars.outputs.archive_name }}

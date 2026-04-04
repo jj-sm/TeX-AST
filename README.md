@@ -94,6 +94,31 @@ Las indicaciones marcadas con: `<--*` indican que ese archivo o directorio no de
 ## Contribuir
 Se recibe feedback, contribuciones, PRs; ¡todo es bienvenido!
 
+## Publicar release de Plantilla
+
+El repositorio incluye el workflow [.github/workflows/release-plantilla.yml](.github/workflows/release-plantilla.yml), que empaqueta el contenido de `Plantilla/` (excluyendo `Plantilla/.gitignore`) y lo sube como asset de un release.
+
+Disparadores disponibles:
+
+1. Push de tags que comiencen con `v` (por ejemplo `v1.0.0`).
+2. Ejecución manual desde la pestaña Actions (`workflow_dispatch`).
+
+Para release automático con tag:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+Para release manual:
+
+1. Ir a Actions.
+2. Abrir el workflow `Release Plantilla on Tag`.
+3. Click en `Run workflow`.
+4. Opcional: indicar `tag_name` (debe iniciar con `v`, por ejemplo `v1.0.1`).
+
+El archivo adjunto al release se llama `Plantilla-<tag>.zip`.
+
 
 Made with ❤️ by [jj-sm](https://www.linkedin.com/in/jj-sm/)
 
