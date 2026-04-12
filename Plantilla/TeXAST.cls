@@ -90,16 +90,19 @@
 %%%                            for much functionality;
 %%%                       2) To support the existing functionalities utilized the RevTeX4-2 macros 
 %%%
-\ProvidesClass{aastex7}%%%
+\ProvidesClass{TeXAST}%%%
  [2025/02/06 Version 7/AAS markup document class]%
 {}
-\ClassInfo{aastex}{%
+\ClassInfo{TeXAST}{%
 ^^J^^J
  Original \protect\LaTeX2.09 style
  by Chris Biemesderfer (chris@seagoat.com).
 ^^J
  Adapted to \protect\LaTeXe\space
  by A. Ogawa (ogawa@teleport.com)%
+^^J
+ Adapted to \TeX AST
+ by Juan Jose Sanchez (gh@jjsm.science)%
 ^^J
 emulateapj.cls included, Copyright 2000-2015 Alexey Vikhlinin
 ^^J
