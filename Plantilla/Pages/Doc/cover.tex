@@ -6,7 +6,7 @@
 
 % --- Count authors ---
 \newcount\authorcount
-\def\countcoverauthors#1{%
+\def\countauthors#1{%
     \authorcount=0%
     \@for\@temp:=#1\do{\advance\authorcount by 1}%
 }
@@ -42,7 +42,7 @@
 
 % --- Print authors ---
 \newcommand{\printauthors}{%
-    \countcoverauthors{\coverauthors}%
+    \countauthors{\coverauthors}%
     \begin{center}
     \large\textbf{%
         \ifnum\authorcount>1%
@@ -57,7 +57,7 @@
 
 % --- Print professors ---
 \newcommand{\printprof}{%
-    \countcoverauthors{\coverprofessor}%
+    \countauthors{\coverprofessor}%
     \begin{center}
     \large\textbf{%
         \ifnum\authorcount>1%
@@ -71,7 +71,7 @@
 }
 
 \newcommand{\printprofassist}{%
-    \countcoverauthors{\coverassist}%
+    \countauthors{\coverassist}%
     \begin{center}
     \large\textbf{%
         \ifnum\authorcount>1%
@@ -85,6 +85,9 @@
 }
 
 \makeatother
+
+
+
 
 \begin{center}
 % \thispagestyle{plain}
@@ -123,15 +126,29 @@
     
     \vfill
     
-    \begin{minipage}[t]{0.45\textwidth}
-        \centering
-        \large \textbf{\LabDateName} \\ \docinitdate, \the\year
-    \end{minipage}
+    \makeatletter
+    \setbox0=\hbox{\docinitdate}\ifdim\wd0=0pt
+        % CASE: EMPTY (The box width is 0)
+        \begin{center}
+            \large \textbf{\ReportDateName} \\ 
+            \the\day \ \CommonOfDate \ \docfinalmonth, \the\year
+        \end{center}
+    \else
+        % CASE: NOT EMPTY (The box has width)
+        \noindent
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \large \textbf{\LabDateName} \\ 
+            \docinitdate, \the\year
+        \end{minipage}
         \hfill
-    \begin{minipage}[t]{0.45\textwidth}
-        \centering
-        \large \textbf{\ReportDateName} \\ \the\day \ \CommonOfDate \ \docfinalmonth, \the\year
-    \end{minipage}
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \large \textbf{\ReportDateName} \\ 
+            \the\day \ \CommonOfDate \ \docfinalmonth, \the\year
+        \end{minipage}
+    \fi
+    \makeatother
     
 \end{center}
 \thispagestyle{empty}
