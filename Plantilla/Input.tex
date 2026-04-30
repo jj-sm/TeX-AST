@@ -15,6 +15,16 @@
 % \orcidboolfalse   % or 
 \orcidbooltrue
 
+% Select citation and reference style:
+%   \usenumcitetrue  -> numbered style [1], [2], ...
+%   \usenumcitefalse -> default AASTeX author-year style (Author et al. YYYY)
+%
+% NOTE: after switching modes, delete .aux and .bbl before recompiling,
+%       then run: pdflatex -> bibtex -> pdflatex -> pdflatex
+\newif\ifusenumcite
+% \usenumcitetrue   % or
+\usenumcitefalse
+
 % --- Authors ---
 \def\coverauthors{
     {0009-0005-4685-695X}{Juan José Sánchez Medina},
@@ -75,7 +85,7 @@
 \usepackage{lipsum}
 \usepackage{multirow}
 \usepackage{soul}
-\usepackage{todonotes}
+\usepackage[colorinlistoftodos, spanish]{todonotes}
 \usepackage{siunitx}
 
 % --- Custom Commands ---
@@ -89,8 +99,12 @@
   }\nolimits%
 }
 
+\newcommand{\todoerror}[2][]{\todo[color=red!70, inline, #1]{#2}}
+\newcommand{\todowarn}[2][]{\todo[color=orange, inline, #1]{#2}}
+\newcommand{\todoremark}[2][]{\todo[color=yellow!80!black, inline, #1]{#2}}
+\newcommand{\todohint}[2][]{\todo[color=green!20, inline, #1]{#2}}
+\newcommand{\tododone}[2][]{\todo[color=blue!50, inline, #1]{#2}}
 
 \makeatletter
 \let\frontmatter@title@above=\relax
 \makeatother
-

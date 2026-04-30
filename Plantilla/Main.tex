@@ -16,6 +16,18 @@
 
 \input{Input.tex}
 
+%% [MOD] Switch citation style based on \ifusenumcite (set in Input.tex).
+%% Both modes share aasjournalv7.bst so author lists and formatting stay
+%% identical. natbib's numbers mode replaces the author-year labels with [1],[2]...
+%% - \usenumcitetrue  : numbered refs [1],[2],...
+%% - \usenumcitefalse : default AASTeX author-year style
+%%
+%% IMPORTANT: when switching modes delete .aux and .bbl files, then run:
+%%   pdflatex -> bibtex -> pdflatex -> pdflatex
+\ifusenumcite
+  \setcitestyle{numbers,compress,open={[},close={]}}
+\fi
+
 %%
 %% This initial command takes arguments that can be used to easily modify 
 %% the output of the compiled manuscript. Any combination of arguments can be 
@@ -181,7 +193,7 @@
 \input{Pages/Sections/4_resultados_y_analisis}
 \input{Pages/Sections/5_discuciones}
 \input{Pages/Sections/6_conclusiones}
-\input{Pages/Sections/preguntas.tex}
+\input{Pages/Sections/Template.tex}
 
 
 % ====================================== ACKNOWLEDGMENT & CONTRIBUTIONS ==========================================
@@ -249,9 +261,19 @@
 %% pdflatex sample7.tex
 %% pdflatex sample7.tex
 
+%% Always use aasjournalv7.bst for both modes (author truncation, journal
+%% abbreviations). natbib in numbers mode replaces the author-year labels
+%% with [1],[2],... automatically.
+%% Label alignment (numbers mode only): fixed-width box keeps [1]..[99] in
+%% a true column; \leftmargini pushes the block right to match aastex layout.
+\ifusenumcite
+  \makeatletter
+  \def\@biblabel#1{\makebox[2em][r]{[#1]}\hspace{0.6em}}
+  \makeatother
+  \setlength{\leftmargini}{3em}
+\fi
 \bibliography{Bibliography}
 \bibliographystyle{Config/NoMod/aasjournalv7.bst}
-% \bibliographystyle{authortitle}
 
 
 % ================================================ APPENDIX =====================================================
@@ -270,6 +292,8 @@
 %% Include this line if you are using the \added, \replaced, \deleted
 %% commands to see a summary list of all changes at the end of the article.
 %\listofchanges
+
+\input{Pages/Sections/Tasks.tex}
 
 \end{document}
 
